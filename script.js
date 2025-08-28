@@ -4,6 +4,8 @@ function getElement(id){
 
 const histryContainer = getElement("histry-container");
 
+// coins first 
+
 function getCurrentTime() {
     const now = new Date();
     const hours = String(now.getHours()).padStart(2, '0');
@@ -40,5 +42,35 @@ clearButton.addEventListener("click", () =>{
     
 });
 
+// coin 
 
 
+//coin
+
+
+// heart count start
+let heartCount = 0;
+const heartCountElement = getElement("heart-count");
+
+document.querySelectorAll(".heart-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+        heartCount++;
+        heartCountElement.innerText = heartCount;
+    });
+});
+// heart count end 
+
+// copy click start
+let copyCount = 0;
+const copyCountElement = getElement("copy-count");
+document.querySelectorAll(".copy-btn").forEach((btn, index) => {
+    btn.addEventListener("click", () => {
+        const number = getElement(`number-${index+1}`).innerText;
+        navigator.clipboard.writeText(number).then(() => {
+            alert(`Copied: ${number}`);
+            copyCount++;
+            copyCountElement.innerText = copyCount;
+        });
+    });
+});
+// copy click end
