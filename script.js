@@ -1,3 +1,4 @@
+
 function getElement(id){
     return document.getElementById(id);
 }
@@ -5,6 +6,12 @@ function getElement(id){
 const histryContainer = getElement("histry-container");
 
 // coins first 
+
+let coin = 100;
+const coinBalance = getElement("coin-balance");
+coinBalance.innerText = coin;
+
+// coins end 
 
 function getCurrentTime() {
     const now = new Date();
@@ -19,6 +26,16 @@ document.querySelectorAll(".call-btn").forEach((btn, index) => {
         const title = getElement(`title-${index + 1}`).innerText;
         const number = getElement(`number-${index + 1}`).innerText;
 
+        // coin check 
+        if(coin <= 0){
+            alert("❌ No coins left! Please recharge.");
+            return;
+        }
+        coin -= 10;
+        coinBalance.innerText = coin;
+        //coin check
+        
+        alert(`📞 Calling ${title} - ${number}`);
 
         const newHistry = document.createElement("div");
         newHistry.className = "histry mt-5 bg-gray-100 mx-1 rounded-md py-2 px-4";
@@ -41,12 +58,6 @@ clearButton.addEventListener("click", () =>{
     histryContainer.innerHTML = "";
     
 });
-
-// coin 
-
-
-//coin
-
 
 // heart count start
 let heartCount = 0;
@@ -74,3 +85,6 @@ document.querySelectorAll(".copy-btn").forEach((btn, index) => {
     });
 });
 // copy click end
+
+
+
