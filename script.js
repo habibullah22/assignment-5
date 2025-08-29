@@ -27,11 +27,11 @@ document.querySelectorAll(".call-btn").forEach((btn, index) => {
         const number = getElement(`number-${index + 1}`).innerText;
 
         // coin check 
-        if(coin <= 0){
+        if(coin < 20){
             alert("❌ No coins left! Please recharge.");
             return;
         }
-        coin -= 10;
+        coin -= 20;
         coinBalance.innerText = coin;
         //coin check
         
